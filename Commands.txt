@@ -1,0 +1,19 @@
+Setup:
+
+npx create-next-app@latest velmora
+cd velmora-admin
+npm install @mantine/core @mantine/hooks @mantine/form
+npm install @apollo/client graphql
+
+Install GraphQL Loader
+npm install graphql-tag
+
+Setup GraphQL Codegen for Velmora
+npm install -D @graphql-codegen/cli
+npm install -D @graphql-codegen/typescript
+npm install -D @graphql-codegen/typescript-operations
+npm install -D @graphql-codegen/typescript-react-apollo
+
+Initialize Codegen
+npx graphql-codegen init
+------------------------------------------------------
