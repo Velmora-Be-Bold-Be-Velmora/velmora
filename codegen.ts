@@ -3,24 +3,28 @@ import * as dotenv from 'dotenv';
 
 dotenv.config({ path: '.env.local' });
 
+const HASURA_URL = process.env.NEXT_PUBLIC_HASURA_URL!;
+const HASURA_SECRET = process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET!;
+
 const config: CodegenConfig = {
+  overwrite: true,
+
   schema: [
     {
-      [process.env.NEXT_PUBLIC_HASURA_URL as string]: {
+      [HASURA_URL]: {
         headers: {
-          'x-hasura-admin-secret': process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET as string,
+          'x-hasura-admin-secret': HASURA_SECRET,
         },
       },
     },
   ],
+
   documents: ['src/graphql/**/*.ts'],
+
   generates: {
-    './src/graphql/generated/graphql.ts': {
-      plugins: [
-        'typescript',
-        'typescript-operations',
-        'typescript-react-apollo',
-      ],
+    './src/graphql/generated/': {
+      preset: 'client',
+      plugins: [],
     },
   },
 };
