@@ -1,3 +1,7 @@
 export default function Page() {
-  return <h1>Checkout</h1>;
+  return (
+    <main style={{ padding: '1.5rem' }}>
+      <h1>Checkout</h1>
+    </main>
+  );
 }

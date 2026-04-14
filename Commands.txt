@@ -19,4 +19,6 @@ npx graphql-codegen init
 
 install dotenv
 npm install dotenv
+
+npm install @apollo/client@3.8.0
 ------------------------------------------------------
