@@ -21,4 +21,8 @@ install dotenv
 npm install dotenv
 
 npm install @apollo/client@3.8.0
+
+carousel
+npm install embla-carousel@^8.5.2 embla-carousel-react@^8.5.2 @mantine/carousel
+npm install embla-carousel-autoplay@^8.5.2
 ------------------------------------------------------

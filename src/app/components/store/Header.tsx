@@ -48,18 +48,18 @@ export default function HeaderMegaMenu() {
     </UnstyledButton>
   ));       
   return (
-    <Box pb={120}>
+    <Box >
         <header className={classes.header}>
             <Group justify="space-between" h="100%">
                 <Image src="/img/logo.png" alt="Velmora Logo" width={80} height={40} style={{ marginRight: '1rem' }} />
                 <Group h={"100%"} gap={0} visibleFrom="sm">
-                    <a href="#" className={classes.link}>Home</a>
+                    <a href="#" className={classes.link}>HOME</a>
                     <HoverCard width={600} shadow="md" position="bottom" radius="md" withinPortal>
                         <HoverCard.Target>
                             <a href="#" className={classes.link}>
                             <Center inline>
                                 <Box component="span" mr={5}>
-                                    Products
+                                    PRODUCTS
                                 </Box>
                                 <IconChevronDown size={16} color={theme.colors.blue[6]} />
                             </Center>
@@ -94,8 +94,8 @@ export default function HeaderMegaMenu() {
                             </div>
                         </HoverCard.Dropdown>
                     </HoverCard>    
-                    <a href="#" className={classes.link}>About</a>
-                    <a href="#" className={classes.link}>Contact</a>
+                    <a href="#" className={classes.link}>ABOUT US</a>
+                    <a href="#" className={classes.link}>CONTACT US</a>
                 </Group>
                 <Group visibleFrom="sm">
                         <Button variant="default">Login</Button>
