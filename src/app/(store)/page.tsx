@@ -5,12 +5,38 @@ import { Card, Text } from '@mantine/core';
 import OfferSection from '../components/store/home/OfferSection';
 import BanerSection from '../components/store/home/BanerSection';
 import RisingStarsSection from '../components/store/home/RisingStarsSection';
+import ShopByCategorySection from '../components/store/home/ShopByCategorySection';
 
 type Product = {
   id: string;
-  name: string;
-  price: number;
-  is_deleted?: boolean;
+  name?: string;
+  slug?: string;
+  description?: string;
+  short_description?: string;
+  price?: number;
+  discount_price?: number;
+  cost_price?: number;
+  currency?: string;
+  sku?: string;
+  stock_quantity?: number;
+  is_in_stock?: boolean;
+  low_stock_threshold?: number;
+  category_id?: string | number | null;
+  brand?: string;
+  main_image?: string;
+  gallery_images?: string;
+  gender?: string;
+  material?: string;
+  is_active?: boolean;
+  is_featured?: boolean;
+  is_new?: boolean;
+  is_trending?: boolean;
+  rating_avg?: number;
+  rating_count?: number;
+  meta_title?: string;
+  meta_description?: string;
+  created_at?: string;
+  updated_at?: string;
 };
 
 type ProductsResponse = {
@@ -27,6 +53,7 @@ export default function Home() {
       <OfferSection />
       <BanerSection/>
       <RisingStarsSection />
+      <ShopByCategorySection/>
       {data?.products?.map((item: any) => (
         <Card key={item.id} shadow="sm" p="lg" mb="sm">
           <Text fw={600}>{item.name}</Text>

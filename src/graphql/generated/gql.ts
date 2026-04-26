@@ -14,10 +14,10 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "\nquery GetProducts {\n  products {\n        id\n\t\tname\n\t\tprice\n\t\tcreated_at\n\t\tupdated_at\n\t\tis_deleted\n  }\n}\n": typeof types.GetProductsDocument,
+    "\nquery GetProducts {\n  products {\n    id\n    name\n    slug\n    description\n    short_description\n    price\n    discount_price\n    cost_price\n    currency\n    sku\n    stock_quantity\n    is_in_stock\n    low_stock_threshold\n    category_id\n    brand\n    main_image\n    gallery_images\n    gender\n    material\n    is_active\n    is_featured\n    is_new\n    is_trending\n    rating_avg\n    rating_count\n    meta_title\n    meta_description\n    created_at\n    updated_at\n  }\n}\n": typeof types.GetProductsDocument,
 };
 const documents: Documents = {
-    "\nquery GetProducts {\n  products {\n        id\n\t\tname\n\t\tprice\n\t\tcreated_at\n\t\tupdated_at\n\t\tis_deleted\n  }\n}\n": types.GetProductsDocument,
+    "\nquery GetProducts {\n  products {\n    id\n    name\n    slug\n    description\n    short_description\n    price\n    discount_price\n    cost_price\n    currency\n    sku\n    stock_quantity\n    is_in_stock\n    low_stock_threshold\n    category_id\n    brand\n    main_image\n    gallery_images\n    gender\n    material\n    is_active\n    is_featured\n    is_new\n    is_trending\n    rating_avg\n    rating_count\n    meta_title\n    meta_description\n    created_at\n    updated_at\n  }\n}\n": types.GetProductsDocument,
 };
 
 /**
@@ -37,7 +37,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\nquery GetProducts {\n  products {\n        id\n\t\tname\n\t\tprice\n\t\tcreated_at\n\t\tupdated_at\n\t\tis_deleted\n  }\n}\n"): (typeof documents)["\nquery GetProducts {\n  products {\n        id\n\t\tname\n\t\tprice\n\t\tcreated_at\n\t\tupdated_at\n\t\tis_deleted\n  }\n}\n"];
+export function graphql(source: "\nquery GetProducts {\n  products {\n    id\n    name\n    slug\n    description\n    short_description\n    price\n    discount_price\n    cost_price\n    currency\n    sku\n    stock_quantity\n    is_in_stock\n    low_stock_threshold\n    category_id\n    brand\n    main_image\n    gallery_images\n    gender\n    material\n    is_active\n    is_featured\n    is_new\n    is_trending\n    rating_avg\n    rating_count\n    meta_title\n    meta_description\n    created_at\n    updated_at\n  }\n}\n"): (typeof documents)["\nquery GetProducts {\n  products {\n    id\n    name\n    slug\n    description\n    short_description\n    price\n    discount_price\n    cost_price\n    currency\n    sku\n    stock_quantity\n    is_in_stock\n    low_stock_threshold\n    category_id\n    brand\n    main_image\n    gallery_images\n    gender\n    material\n    is_active\n    is_featured\n    is_new\n    is_trending\n    rating_avg\n    rating_count\n    meta_title\n    meta_description\n    created_at\n    updated_at\n  }\n}\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
