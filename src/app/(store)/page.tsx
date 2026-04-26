@@ -1,12 +1,13 @@
 'use client';
 import { useQuery } from '@apollo/client/react';
 import { GET_PRODUCT_LIST } from '@/graphql/queries/get-product-list';
-import { Card, Text } from '@mantine/core';
+import { Container, Text } from '@mantine/core';
 import OfferSection from '../components/store/home/OfferSection';
 import BanerSection from '../components/store/home/BanerSection';
 import RisingStarsSection from '../components/store/home/RisingStarsSection';
 import ShopByCategorySection from '../components/store/home/ShopByCategorySection';
 import NotificationMenu from '../components/store/components/NotificationMenu';
+import ProductCard from '../components/store/ProductCard';
 
 type Product = {
   id: string;
@@ -52,15 +53,27 @@ export default function Home() {
   return (
     <>
       <OfferSection />
-      <BanerSection/>
+      <BanerSection />
       <RisingStarsSection />
-      <ShopByCategorySection/>
-      {data?.products?.map((item: any) => (
-        <Card key={item.id} shadow="sm" p="lg" mb="sm">
-          <Text fw={600}>{item.name}</Text>
-          <Text>₹ {item.price}</Text>
-        </Card>
-      ))}
+      <ShopByCategorySection />
+
+      <Container size="xl" py="xl">
+        <Text size="xl" fw={700} style={{ marginBottom: '1rem' }}>
+          Featured Products
+        </Text>
+        <div
+          style={{
+            display: 'grid',
+            gap: '1.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          }}
+        >
+          {data?.products?.map((item: any) => (
+            <ProductCard key={item.id} product={item} />
+          ))}
+        </div>
+      </Container>
+
       <NotificationMenu />
     </>
   );

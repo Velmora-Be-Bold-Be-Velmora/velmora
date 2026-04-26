@@ -5,22 +5,26 @@ import classes from './HeaderMegaMenu.module.css';
 import { IconChevronDown, IconCode } from "@tabler/icons-react";
 import { useMantineTheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 const mockdata = [
     {
         icon: IconCode,
-        title: 'Documentation',
-        description: 'Learn how to integrate with our API'
+        title: 'Products',
+        description: 'Learn how to integrate with our API',
+        href: '/products'
     },
     {
         icon: IconCode,
         title: 'API Reference',
-        description: 'Detailed API information and examples'
+        description: 'Detailed API information and examples',
+        href: '/api-reference'
     },
     {
         icon: IconCode,
         title: 'Support',
-        description: 'Get help from our support team'
+        description: 'Get help from our support team',
+        href: '/support'
     }
 ];
 
@@ -28,10 +32,15 @@ const mockdata = [
 
 export default function HeaderMegaMenu() {
   const theme = useMantineTheme();
+  const router = useRouter();
   const [drawerOpened, { toggle : toggleDrawer, close : closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle : toggleLinks }] = useDisclosure(false);
   const links = mockdata.map((item) => (
-    <UnstyledButton key={item.title} className={classes.subLink}>
+    <UnstyledButton
+      key={item.title}
+      className={classes.subLink}
+      onClick={() => item.href && router.push(item.href)}
+    >
         <Group wrap="nowrap" align="flex-start">
             <ThemeIcon variant="default" size={34} radius={"md"}>
                 <item.icon size={22} color={theme.colors.blue[6]} />
@@ -39,7 +48,7 @@ export default function HeaderMegaMenu() {
             <div>
                 <Text size="sm" fw={500}>
                     {item.title}
-                </Text>
+                </Text> 
                 <Text size="xs" c="dimmed">
                     {item.description}
                 </Text>
