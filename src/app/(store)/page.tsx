@@ -6,6 +6,7 @@ import OfferSection from '../components/store/home/OfferSection';
 import BanerSection from '../components/store/home/BanerSection';
 import RisingStarsSection from '../components/store/home/RisingStarsSection';
 import ShopByCategorySection from '../components/store/home/ShopByCategorySection';
+import NotificationMenu from '../components/store/components/NotificationMenu';
 
 type Product = {
   id: string;
@@ -60,6 +61,7 @@ export default function Home() {
           <Text>₹ {item.price}</Text>
         </Card>
       ))}
+      <NotificationMenu />
     </>
   );
 }

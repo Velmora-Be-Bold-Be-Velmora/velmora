@@ -1,0 +1,47 @@
+.cards
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 1rem; */
+    border: 1px solid #ccc;
+    /* border-radius: 8px;  */
+    width: 210px;
+    height: 300px;
+}
+.cardImage
+{
+    width: 210px;
+    height: 300px;
+    /* border-radius: 8px; */
+}
+.cardContent
+{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    margin-top: 183px;
+    background-color: orangered;
+    color: white;
+    width: 190px;
+}
+.cardTitle 
+{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin: 0px;
+}
+.cardDescription
+{
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0px;
+}
+.cardOffer
+{
+    color: #ffcc00;
+    margin: 0px;
+}

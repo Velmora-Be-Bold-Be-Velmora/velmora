@@ -94,6 +94,12 @@ export type Bigint_Comparison_Exp = {
 /** columns and relationships of "categories" */
 export type Categories = {
   __typename?: 'categories';
+  /** An array relationship */
+  categories: Array<Categories>;
+  /** An aggregate relationship */
+  categories_aggregate: Categories_Aggregate;
+  /** An object relationship */
+  category?: Maybe<Categories>;
   created_at?: Maybe<Scalars['timestamp']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   icon?: Maybe<Scalars['String']['output']>;
@@ -105,10 +111,55 @@ export type Categories = {
   meta_description?: Maybe<Scalars['String']['output']>;
   meta_title?: Maybe<Scalars['String']['output']>;
   name: Scalars['String']['output'];
+  offer?: Maybe<Scalars['String']['output']>;
   parent_id?: Maybe<Scalars['bigint']['output']>;
+  /** An array relationship */
+  products: Array<Products>;
+  /** An aggregate relationship */
+  products_aggregate: Products_Aggregate;
   slug?: Maybe<Scalars['String']['output']>;
   sort_order?: Maybe<Scalars['Int']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+
+/** columns and relationships of "categories" */
+export type CategoriesCategoriesArgs = {
+  distinct_on?: InputMaybe<Array<Categories_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Categories_Order_By>>;
+  where?: InputMaybe<Categories_Bool_Exp>;
+};
+
+
+/** columns and relationships of "categories" */
+export type CategoriesCategories_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Categories_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Categories_Order_By>>;
+  where?: InputMaybe<Categories_Bool_Exp>;
+};
+
+
+/** columns and relationships of "categories" */
+export type CategoriesProductsArgs = {
+  distinct_on?: InputMaybe<Array<Products_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Products_Order_By>>;
+  where?: InputMaybe<Products_Bool_Exp>;
+};
+
+
+/** columns and relationships of "categories" */
+export type CategoriesProducts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Products_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Products_Order_By>>;
+  where?: InputMaybe<Products_Bool_Exp>;
 };
 
 /** aggregated selection of "categories" */
@@ -116,6 +167,33 @@ export type Categories_Aggregate = {
   __typename?: 'categories_aggregate';
   aggregate?: Maybe<Categories_Aggregate_Fields>;
   nodes: Array<Categories>;
+};
+
+export type Categories_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Categories_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Categories_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Categories_Aggregate_Bool_Exp_Count>;
+};
+
+export type Categories_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Categories_Select_Column_Categories_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Categories_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Categories_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Categories_Select_Column_Categories_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Categories_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Categories_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Categories_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Categories_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
 };
 
 /** aggregate fields of "categories" */
@@ -141,6 +219,28 @@ export type Categories_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** order by aggregate values of table "categories" */
+export type Categories_Aggregate_Order_By = {
+  avg?: InputMaybe<Categories_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Categories_Max_Order_By>;
+  min?: InputMaybe<Categories_Min_Order_By>;
+  stddev?: InputMaybe<Categories_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Categories_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Categories_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Categories_Sum_Order_By>;
+  var_pop?: InputMaybe<Categories_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Categories_Var_Samp_Order_By>;
+  variance?: InputMaybe<Categories_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "categories" */
+export type Categories_Arr_Rel_Insert_Input = {
+  data: Array<Categories_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Categories_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Categories_Avg_Fields = {
   __typename?: 'categories_avg_fields';
@@ -150,11 +250,22 @@ export type Categories_Avg_Fields = {
   sort_order?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by avg() on columns of table "categories" */
+export type Categories_Avg_Order_By = {
+  id?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
+};
+
 /** Boolean expression to filter rows from the table "categories". All fields are combined with a logical 'AND'. */
 export type Categories_Bool_Exp = {
   _and?: InputMaybe<Array<Categories_Bool_Exp>>;
   _not?: InputMaybe<Categories_Bool_Exp>;
   _or?: InputMaybe<Array<Categories_Bool_Exp>>;
+  categories?: InputMaybe<Categories_Bool_Exp>;
+  categories_aggregate?: InputMaybe<Categories_Aggregate_Bool_Exp>;
+  category?: InputMaybe<Categories_Bool_Exp>;
   created_at?: InputMaybe<Timestamp_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
   icon?: InputMaybe<String_Comparison_Exp>;
@@ -166,7 +277,10 @@ export type Categories_Bool_Exp = {
   meta_description?: InputMaybe<String_Comparison_Exp>;
   meta_title?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  offer?: InputMaybe<String_Comparison_Exp>;
   parent_id?: InputMaybe<Bigint_Comparison_Exp>;
+  products?: InputMaybe<Products_Bool_Exp>;
+  products_aggregate?: InputMaybe<Products_Aggregate_Bool_Exp>;
   slug?: InputMaybe<String_Comparison_Exp>;
   sort_order?: InputMaybe<Int_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamp_Comparison_Exp>;
@@ -189,6 +303,8 @@ export type Categories_Inc_Input = {
 
 /** input type for inserting data into table "categories" */
 export type Categories_Insert_Input = {
+  categories?: InputMaybe<Categories_Arr_Rel_Insert_Input>;
+  category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   icon?: InputMaybe<Scalars['String']['input']>;
@@ -199,7 +315,9 @@ export type Categories_Insert_Input = {
   meta_description?: InputMaybe<Scalars['String']['input']>;
   meta_title?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  offer?: InputMaybe<Scalars['String']['input']>;
   parent_id?: InputMaybe<Scalars['bigint']['input']>;
+  products?: InputMaybe<Products_Arr_Rel_Insert_Input>;
   slug?: InputMaybe<Scalars['String']['input']>;
   sort_order?: InputMaybe<Scalars['Int']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
@@ -217,10 +335,29 @@ export type Categories_Max_Fields = {
   meta_description?: Maybe<Scalars['String']['output']>;
   meta_title?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  offer?: Maybe<Scalars['String']['output']>;
   parent_id?: Maybe<Scalars['bigint']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   sort_order?: Maybe<Scalars['Int']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** order by max() on columns of table "categories" */
+export type Categories_Max_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  icon?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  image_url?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  meta_description?: InputMaybe<Order_By>;
+  meta_title?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  offer?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  slug?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -235,10 +372,29 @@ export type Categories_Min_Fields = {
   meta_description?: Maybe<Scalars['String']['output']>;
   meta_title?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  offer?: Maybe<Scalars['String']['output']>;
   parent_id?: Maybe<Scalars['bigint']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   sort_order?: Maybe<Scalars['Int']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** order by min() on columns of table "categories" */
+export type Categories_Min_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  icon?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  image_url?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  meta_description?: InputMaybe<Order_By>;
+  meta_title?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  offer?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  slug?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "categories" */
@@ -250,6 +406,13 @@ export type Categories_Mutation_Response = {
   returning: Array<Categories>;
 };
 
+/** input type for inserting object relation for remote table "categories" */
+export type Categories_Obj_Rel_Insert_Input = {
+  data: Categories_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Categories_On_Conflict>;
+};
+
 /** on_conflict condition type for table "categories" */
 export type Categories_On_Conflict = {
   constraint: Categories_Constraint;
@@ -259,6 +422,8 @@ export type Categories_On_Conflict = {
 
 /** Ordering options when selecting data from "categories". */
 export type Categories_Order_By = {
+  categories_aggregate?: InputMaybe<Categories_Aggregate_Order_By>;
+  category?: InputMaybe<Categories_Order_By>;
   created_at?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   icon?: InputMaybe<Order_By>;
@@ -270,7 +435,9 @@ export type Categories_Order_By = {
   meta_description?: InputMaybe<Order_By>;
   meta_title?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  offer?: InputMaybe<Order_By>;
   parent_id?: InputMaybe<Order_By>;
+  products_aggregate?: InputMaybe<Products_Aggregate_Order_By>;
   slug?: InputMaybe<Order_By>;
   sort_order?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -306,6 +473,8 @@ export enum Categories_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
+  Offer = 'offer',
+  /** column name */
   ParentId = 'parent_id',
   /** column name */
   Slug = 'slug',
@@ -313,6 +482,22 @@ export enum Categories_Select_Column {
   SortOrder = 'sort_order',
   /** column name */
   UpdatedAt = 'updated_at'
+}
+
+/** select "categories_aggregate_bool_exp_bool_and_arguments_columns" columns of table "categories" */
+export enum Categories_Select_Column_Categories_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  IsActive = 'is_active',
+  /** column name */
+  IsFeatured = 'is_featured'
+}
+
+/** select "categories_aggregate_bool_exp_bool_or_arguments_columns" columns of table "categories" */
+export enum Categories_Select_Column_Categories_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  IsActive = 'is_active',
+  /** column name */
+  IsFeatured = 'is_featured'
 }
 
 /** input type for updating data in table "categories" */
@@ -327,6 +512,7 @@ export type Categories_Set_Input = {
   meta_description?: InputMaybe<Scalars['String']['input']>;
   meta_title?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  offer?: InputMaybe<Scalars['String']['input']>;
   parent_id?: InputMaybe<Scalars['bigint']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   sort_order?: InputMaybe<Scalars['Int']['input']>;
@@ -342,6 +528,14 @@ export type Categories_Stddev_Fields = {
   sort_order?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by stddev() on columns of table "categories" */
+export type Categories_Stddev_Order_By = {
+  id?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Categories_Stddev_Pop_Fields = {
   __typename?: 'categories_stddev_pop_fields';
@@ -351,6 +545,14 @@ export type Categories_Stddev_Pop_Fields = {
   sort_order?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by stddev_pop() on columns of table "categories" */
+export type Categories_Stddev_Pop_Order_By = {
+  id?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_samp on columns */
 export type Categories_Stddev_Samp_Fields = {
   __typename?: 'categories_stddev_samp_fields';
@@ -358,6 +560,14 @@ export type Categories_Stddev_Samp_Fields = {
   level?: Maybe<Scalars['Float']['output']>;
   parent_id?: Maybe<Scalars['Float']['output']>;
   sort_order?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by stddev_samp() on columns of table "categories" */
+export type Categories_Stddev_Samp_Order_By = {
+  id?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "categories" */
@@ -381,6 +591,7 @@ export type Categories_Stream_Cursor_Value_Input = {
   meta_description?: InputMaybe<Scalars['String']['input']>;
   meta_title?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  offer?: InputMaybe<Scalars['String']['input']>;
   parent_id?: InputMaybe<Scalars['bigint']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   sort_order?: InputMaybe<Scalars['Int']['input']>;
@@ -394,6 +605,14 @@ export type Categories_Sum_Fields = {
   level?: Maybe<Scalars['Int']['output']>;
   parent_id?: Maybe<Scalars['bigint']['output']>;
   sort_order?: Maybe<Scalars['Int']['output']>;
+};
+
+/** order by sum() on columns of table "categories" */
+export type Categories_Sum_Order_By = {
+  id?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "categories" */
@@ -418,6 +637,8 @@ export enum Categories_Update_Column {
   MetaTitle = 'meta_title',
   /** column name */
   Name = 'name',
+  /** column name */
+  Offer = 'offer',
   /** column name */
   ParentId = 'parent_id',
   /** column name */
@@ -446,6 +667,14 @@ export type Categories_Var_Pop_Fields = {
   sort_order?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by var_pop() on columns of table "categories" */
+export type Categories_Var_Pop_Order_By = {
+  id?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Categories_Var_Samp_Fields = {
   __typename?: 'categories_var_samp_fields';
@@ -455,6 +684,14 @@ export type Categories_Var_Samp_Fields = {
   sort_order?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by var_samp() on columns of table "categories" */
+export type Categories_Var_Samp_Order_By = {
+  id?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Categories_Variance_Fields = {
   __typename?: 'categories_variance_fields';
@@ -462,6 +699,14 @@ export type Categories_Variance_Fields = {
   level?: Maybe<Scalars['Float']['output']>;
   parent_id?: Maybe<Scalars['Float']['output']>;
   sort_order?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by variance() on columns of table "categories" */
+export type Categories_Variance_Order_By = {
+  id?: InputMaybe<Order_By>;
+  level?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  sort_order?: InputMaybe<Order_By>;
 };
 
 /** ordering argument of a cursor */
@@ -634,6 +879,8 @@ export enum Order_By {
 export type Products = {
   __typename?: 'products';
   brand?: Maybe<Scalars['String']['output']>;
+  /** An object relationship */
+  category?: Maybe<Categories>;
   category_id?: Maybe<Scalars['bigint']['output']>;
   cost_price?: Maybe<Scalars['numeric']['output']>;
   created_at?: Maybe<Scalars['timestamp']['output']>;
@@ -671,6 +918,33 @@ export type Products_Aggregate = {
   nodes: Array<Products>;
 };
 
+export type Products_Aggregate_Bool_Exp = {
+  bool_and?: InputMaybe<Products_Aggregate_Bool_Exp_Bool_And>;
+  bool_or?: InputMaybe<Products_Aggregate_Bool_Exp_Bool_Or>;
+  count?: InputMaybe<Products_Aggregate_Bool_Exp_Count>;
+};
+
+export type Products_Aggregate_Bool_Exp_Bool_And = {
+  arguments: Products_Select_Column_Products_Aggregate_Bool_Exp_Bool_And_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Products_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Products_Aggregate_Bool_Exp_Bool_Or = {
+  arguments: Products_Select_Column_Products_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Products_Bool_Exp>;
+  predicate: Boolean_Comparison_Exp;
+};
+
+export type Products_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Products_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Products_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "products" */
 export type Products_Aggregate_Fields = {
   __typename?: 'products_aggregate_fields';
@@ -694,6 +968,28 @@ export type Products_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** order by aggregate values of table "products" */
+export type Products_Aggregate_Order_By = {
+  avg?: InputMaybe<Products_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Products_Max_Order_By>;
+  min?: InputMaybe<Products_Min_Order_By>;
+  stddev?: InputMaybe<Products_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Products_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Products_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Products_Sum_Order_By>;
+  var_pop?: InputMaybe<Products_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Products_Var_Samp_Order_By>;
+  variance?: InputMaybe<Products_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "products" */
+export type Products_Arr_Rel_Insert_Input = {
+  data: Array<Products_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Products_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Products_Avg_Fields = {
   __typename?: 'products_avg_fields';
@@ -708,12 +1004,26 @@ export type Products_Avg_Fields = {
   stock_quantity?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by avg() on columns of table "products" */
+export type Products_Avg_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
+};
+
 /** Boolean expression to filter rows from the table "products". All fields are combined with a logical 'AND'. */
 export type Products_Bool_Exp = {
   _and?: InputMaybe<Array<Products_Bool_Exp>>;
   _not?: InputMaybe<Products_Bool_Exp>;
   _or?: InputMaybe<Array<Products_Bool_Exp>>;
   brand?: InputMaybe<String_Comparison_Exp>;
+  category?: InputMaybe<Categories_Bool_Exp>;
   category_id?: InputMaybe<Bigint_Comparison_Exp>;
   cost_price?: InputMaybe<Numeric_Comparison_Exp>;
   created_at?: InputMaybe<Timestamp_Comparison_Exp>;
@@ -769,6 +1079,7 @@ export type Products_Inc_Input = {
 /** input type for inserting data into table "products" */
 export type Products_Insert_Input = {
   brand?: InputMaybe<Scalars['String']['input']>;
+  category?: InputMaybe<Categories_Obj_Rel_Insert_Input>;
   category_id?: InputMaybe<Scalars['bigint']['input']>;
   cost_price?: InputMaybe<Scalars['numeric']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
@@ -827,6 +1138,34 @@ export type Products_Max_Fields = {
   updated_at?: Maybe<Scalars['timestamp']['output']>;
 };
 
+/** order by max() on columns of table "products" */
+export type Products_Max_Order_By = {
+  brand?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  currency?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  gallery_images?: InputMaybe<Order_By>;
+  gender?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  main_image?: InputMaybe<Order_By>;
+  material?: InputMaybe<Order_By>;
+  meta_description?: InputMaybe<Order_By>;
+  meta_title?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  short_description?: InputMaybe<Order_By>;
+  sku?: InputMaybe<Order_By>;
+  slug?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Products_Min_Fields = {
   __typename?: 'products_min_fields';
@@ -856,6 +1195,34 @@ export type Products_Min_Fields = {
   updated_at?: Maybe<Scalars['timestamp']['output']>;
 };
 
+/** order by min() on columns of table "products" */
+export type Products_Min_Order_By = {
+  brand?: InputMaybe<Order_By>;
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  currency?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  gallery_images?: InputMaybe<Order_By>;
+  gender?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  main_image?: InputMaybe<Order_By>;
+  material?: InputMaybe<Order_By>;
+  meta_description?: InputMaybe<Order_By>;
+  meta_title?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  short_description?: InputMaybe<Order_By>;
+  sku?: InputMaybe<Order_By>;
+  slug?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
 /** response of any mutation on the table "products" */
 export type Products_Mutation_Response = {
   __typename?: 'products_mutation_response';
@@ -875,6 +1242,7 @@ export type Products_On_Conflict = {
 /** Ordering options when selecting data from "products". */
 export type Products_Order_By = {
   brand?: InputMaybe<Order_By>;
+  category?: InputMaybe<Categories_Order_By>;
   category_id?: InputMaybe<Order_By>;
   cost_price?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
@@ -972,6 +1340,34 @@ export enum Products_Select_Column {
   UpdatedAt = 'updated_at'
 }
 
+/** select "products_aggregate_bool_exp_bool_and_arguments_columns" columns of table "products" */
+export enum Products_Select_Column_Products_Aggregate_Bool_Exp_Bool_And_Arguments_Columns {
+  /** column name */
+  IsActive = 'is_active',
+  /** column name */
+  IsFeatured = 'is_featured',
+  /** column name */
+  IsInStock = 'is_in_stock',
+  /** column name */
+  IsNew = 'is_new',
+  /** column name */
+  IsTrending = 'is_trending'
+}
+
+/** select "products_aggregate_bool_exp_bool_or_arguments_columns" columns of table "products" */
+export enum Products_Select_Column_Products_Aggregate_Bool_Exp_Bool_Or_Arguments_Columns {
+  /** column name */
+  IsActive = 'is_active',
+  /** column name */
+  IsFeatured = 'is_featured',
+  /** column name */
+  IsInStock = 'is_in_stock',
+  /** column name */
+  IsNew = 'is_new',
+  /** column name */
+  IsTrending = 'is_trending'
+}
+
 /** input type for updating data in table "products" */
 export type Products_Set_Input = {
   brand?: InputMaybe<Scalars['String']['input']>;
@@ -1018,6 +1414,19 @@ export type Products_Stddev_Fields = {
   stock_quantity?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by stddev() on columns of table "products" */
+export type Products_Stddev_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Products_Stddev_Pop_Fields = {
   __typename?: 'products_stddev_pop_fields';
@@ -1032,6 +1441,19 @@ export type Products_Stddev_Pop_Fields = {
   stock_quantity?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by stddev_pop() on columns of table "products" */
+export type Products_Stddev_Pop_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_samp on columns */
 export type Products_Stddev_Samp_Fields = {
   __typename?: 'products_stddev_samp_fields';
@@ -1044,6 +1466,19 @@ export type Products_Stddev_Samp_Fields = {
   rating_avg?: Maybe<Scalars['Float']['output']>;
   rating_count?: Maybe<Scalars['Float']['output']>;
   stock_quantity?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by stddev_samp() on columns of table "products" */
+export type Products_Stddev_Samp_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
 };
 
 /** Streaming cursor of the table "products" */
@@ -1099,6 +1534,19 @@ export type Products_Sum_Fields = {
   rating_avg?: Maybe<Scalars['numeric']['output']>;
   rating_count?: Maybe<Scalars['Int']['output']>;
   stock_quantity?: Maybe<Scalars['Int']['output']>;
+};
+
+/** order by sum() on columns of table "products" */
+export type Products_Sum_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "products" */
@@ -1184,6 +1632,19 @@ export type Products_Var_Pop_Fields = {
   stock_quantity?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by var_pop() on columns of table "products" */
+export type Products_Var_Pop_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Products_Var_Samp_Fields = {
   __typename?: 'products_var_samp_fields';
@@ -1196,6 +1657,19 @@ export type Products_Var_Samp_Fields = {
   rating_avg?: Maybe<Scalars['Float']['output']>;
   rating_count?: Maybe<Scalars['Float']['output']>;
   stock_quantity?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by var_samp() on columns of table "products" */
+export type Products_Var_Samp_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -1212,17 +1686,30 @@ export type Products_Variance_Fields = {
   stock_quantity?: Maybe<Scalars['Float']['output']>;
 };
 
+/** order by variance() on columns of table "products" */
+export type Products_Variance_Order_By = {
+  category_id?: InputMaybe<Order_By>;
+  cost_price?: InputMaybe<Order_By>;
+  discount_price?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  low_stock_threshold?: InputMaybe<Order_By>;
+  price?: InputMaybe<Order_By>;
+  rating_avg?: InputMaybe<Order_By>;
+  rating_count?: InputMaybe<Order_By>;
+  stock_quantity?: InputMaybe<Order_By>;
+};
+
 export type Query_Root = {
   __typename?: 'query_root';
-  /** fetch data from the table: "categories" */
+  /** An array relationship */
   categories: Array<Categories>;
-  /** fetch aggregated fields from the table: "categories" */
+  /** An aggregate relationship */
   categories_aggregate: Categories_Aggregate;
   /** fetch data from the table: "categories" using primary key columns */
   categories_by_pk?: Maybe<Categories>;
-  /** fetch data from the table: "products" */
+  /** An array relationship */
   products: Array<Products>;
-  /** fetch aggregated fields from the table: "products" */
+  /** An aggregate relationship */
   products_aggregate: Products_Aggregate;
   /** fetch data from the table: "products" using primary key columns */
   products_by_pk?: Maybe<Products>;
@@ -1276,17 +1763,17 @@ export type Query_RootProducts_By_PkArgs = {
 
 export type Subscription_Root = {
   __typename?: 'subscription_root';
-  /** fetch data from the table: "categories" */
+  /** An array relationship */
   categories: Array<Categories>;
-  /** fetch aggregated fields from the table: "categories" */
+  /** An aggregate relationship */
   categories_aggregate: Categories_Aggregate;
   /** fetch data from the table: "categories" using primary key columns */
   categories_by_pk?: Maybe<Categories>;
   /** fetch data from the table in a streaming manner: "categories" */
   categories_stream: Array<Categories>;
-  /** fetch data from the table: "products" */
+  /** An array relationship */
   products: Array<Products>;
-  /** fetch aggregated fields from the table: "products" */
+  /** An aggregate relationship */
   products_aggregate: Products_Aggregate;
   /** fetch data from the table: "products" using primary key columns */
   products_by_pk?: Maybe<Products>;

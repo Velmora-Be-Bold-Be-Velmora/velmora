@@ -5,6 +5,7 @@ query GetCategories {
     name
     slug
     description
+    offer
     parent_id
     level
     image_url

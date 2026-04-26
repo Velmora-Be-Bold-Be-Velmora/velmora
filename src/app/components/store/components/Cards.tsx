@@ -1,10 +1,13 @@
-
-export default function Cards({ title, description, image }: { title: string; description: string; image: string }) {
+import classes from './Style.module.css';
+export default function Cards({ title, description, image, offer }: { title: string; description: string; image: string; offer?: string }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '1rem', border: '1px solid #ccc', borderRadius: '8px', width: '200px' }}>
-      <img src={image} alt={title} style={{ width: '100%', height: 'auto', borderRadius: '8px' }} />
-      <h3 style={{ marginTop: '0.5rem' }}>{title}</h3>
-      <p style={{ textAlign: 'center' }}>{description}</p>
+    <div className={classes.cards}>
+      <img src={image} alt={title} className={classes.cardImage} />
+      <div className={classes.cardContent}>
+        <h3 className={classes.cardTitle}>{title}</h3>
+        {offer ? <h2 className={classes.cardOffer}>{offer}</h2> : null}
+        <p className={classes.cardDescription}>{description}</p>
+      </div>
     </div>
   );
 }
